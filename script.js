@@ -156,6 +156,12 @@ const skoruCiz = () => {
     ctx.fillText(`Skor: ${skor}`,8,20)
 }
 
+const canCiz = () => {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = ballColor;
+    ctx.fillText(`Can: ${can}`, width-65,20);
+}
+
 oyunCiz();
 
 const oyunBaslat = () =>{
