@@ -39,12 +39,21 @@ for(let k = 0; k < tuglaSutunSayisi; k++){
     }
 }
 
+let skor = 0;
+let can = 3;
+let isGameOver = false;
+
 //arrow function
 const oyunCiz = () =>{
     tahtayiTemizle();
     topCiz();
     topunKonumunuDegistir();
     cubukCiz();
+    tuglalariCiz();
+    tuglayaCarptiMi();
+    skoruCiz();
+    canCiz();
+    if(oyunBaslatYazisiCiz()) return;
 }
 
 const tahtayiTemizle = () => {
@@ -53,24 +62,37 @@ const tahtayiTemizle = () => {
 
 const topCiz = () =>{
     ctx.beginPath(); //çizim yapılacağını belirtir
-    ctx.arc(x, y, 15, 0, Math.PI * 2); //yuvarlak tipte
+    ctx.arc(x, y, 10, 0, Math.PI * 2); //yuvarlak tipte
     ctx.fillStyle = ballColor;
     ctx.fill();
     ctx.closePath();
 }
 
 const topunKonumunuDegistir = () =>{ 
-    if(x + dx > width - 15 || x + dx < 15){ //canvasın kenarına çarptığında
+    if(x + dx > width - 10 || x + dx < 10){ //canvasın kenarına çarptığında
         dx = -dx; //ters yönde hareket et
         // ballColor = "red";
     }
-    if( y + dy < 15){ //yukarı çarptığında
+    if( y + dy < 10){ //yukarı çarptığında
         dy = -dy;
     }
-    else if(y + dy > cubukY - 10 && (x > cubukX)){ // çubuğa çarptığında
+    else if(y + dy > cubukY - 10 && y + dy < cubukY + 10 && x > cubukX && x < cubukX + cubukGenisligi){ // çubuğa çarptığında
         dy = -dy;
     }
-    else if(y + dy > height - 15 && x > cubukX){ // aşağı çarptığında
+    else if(y + dy > height - 10){ // aşağı çarptığında
+        if(x < cubukX || x > cubukX + cubukGenisligi)
+        {
+            can--;
+            if(can === 0)
+            {
+                ctx.font = "25px Verdana";
+                ctx.fillStyle = "red";
+                ctx.fillText("Game Over!", width/2 - 70, height/2);
+                clearInterval(interval);
+                isGameOver = true;
+                oyunBasladiMi = false;
+            }
+        }
         dy = -dy;
     }
 
