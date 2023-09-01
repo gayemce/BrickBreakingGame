@@ -127,6 +127,29 @@ const tuglalariCiz = () => {
     }
 }
 
+const tuglayaCarptiMi = () => {
+    for(let sutun = 0; sutun < tuglaSutunSayisi; sutun++){
+        for(let satir = 0; satir < tuglaSatirSayisi; satir++){
+            const tugla = tuglalar[sutun][satir];
+            if(tugla.status === 1){
+                if(x > tugla.x && x < tugla.x + tuglaGenislik && y > tugla.y && y < tugla.y + tuglaYukseklik){
+                    dy = -dy
+                    tugla.status = 0;
+                    skor += 10;
+
+                    if(skor === 150){
+                        clearInterval(interval);
+
+                        ctx.font = "25px Verdana";
+                        fillStyle = "black";
+                        ctx.fillText("Tebrikler, oyunu kazandın!", width/2 - 120, height/2);
+                    }
+                }
+            }
+        }
+    }
+}
+
 oyunCiz();
 
 const oyunBaslat = () =>{
