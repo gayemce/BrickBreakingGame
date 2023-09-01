@@ -150,6 +150,12 @@ const tuglayaCarptiMi = () => {
     }
 }
 
+const skoruCiz = () => {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = ballColor;
+    ctx.fillText(`Skor: ${skor}`,8,20)
+}
+
 oyunCiz();
 
 const oyunBaslat = () =>{
