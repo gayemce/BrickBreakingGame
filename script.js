@@ -107,6 +107,26 @@ const cubukCiz = () => {
     ctx.closePath();
 }
 
+const tuglalariCiz = () => {
+    for(let sutun = 0; sutun < tuglaSutunSayisi; sutun++){        
+        for(let satir = 0; satir < tuglaSatirSayisi; satir++){
+            if(tuglalar[sutun][satir].status === 1){
+                const tuglaX = sutun * (tuglaGenislik + tuglaPadding) + tuglaOffSetLeft;
+                const tuglaY = satir * (tuglaYukseklik + tuglaPadding) + tuglaOffSetTop; 
+
+                tuglalar[sutun][satir].x = tuglaX;
+                tuglalar[sutun][satir].y = tuglaY;
+
+                ctx.beginPath();
+                ctx.rect(tuglaX, tuglaY, tuglaGenislik, tuglaYukseklik);
+                ctx.fillStyle = ballColor;
+                ctx.fill();
+                ctx.closePath();
+            }
+        }
+    }
+}
+
 oyunCiz();
 
 const oyunBaslat = () =>{
