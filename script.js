@@ -178,8 +178,13 @@ oyunCiz();
 
 const oyunBaslat = () =>{
     if(oyunBasladiMi === false){
-        interval = setInterval(oyunCiz,20);
-        oyunBasladiMi = true;
+        if(isGameOver){
+            document.location.reload();
+        }
+        else{
+            interval = setInterval(oyunCiz,10);
+            oyunBasladiMi = true;
+        }
     }
     else{
         clearInterval(interval);
@@ -194,10 +199,10 @@ const oyunBaslat = () =>{
 function myKeydownFunction(e){
     if(e.key === "Right" || e.key === "ArrowRight"){
         if(cubukX + 5 > width - cubukGenisligi) return;
-            cubukX += 5;
+            cubukX += 15;
     }
     else if(e.key === "Left" || e.key === "ArrowLeft"){
         if(cubukX - 5 < 0) return;
-        cubukX -= 5;
+        cubukX -= 15;
     }
 }
