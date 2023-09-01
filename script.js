@@ -162,6 +162,18 @@ const canCiz = () => {
     ctx.fillText(`Can: ${can}`, width-65,20);
 }
 
+const oyunBaslatYazisiCiz = () => {
+    if(!oyunBasladiMi && !isGameOver){
+        ctx.fillStyle = "black";
+        ctx.font = "20px Verdana";
+        ctx.fillText(`Oyuna Başlamak İçin Tıkla`, width/2 - 130, height/2);
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 oyunCiz();
 
 const oyunBaslat = () =>{
