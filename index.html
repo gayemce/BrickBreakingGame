@@ -12,17 +12,36 @@
         }
         canvas{
             background-color: #eee;
+            box-shadow: 5px 5px 25px black;
         }
 
         body{
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 420px;
+            height: 80vh;
         }
+
+        button{
+            width: 15%;
+            padding: 10px;
+            margin: 3rem 0;
+            background-color: #0095DD;
+            color: white;
+            cursor: pointer;
+            box-shadow: 2px 2px 7px black;
+        }
+
+        button:hover{
+            background-color: #0095FF;
+        }
+
     </style>
 </head>
 <body>
+    <button onclick="yeniOyun()">Yeni Oyun</button>
+
     <canvas onclick="oyunBaslat()" id="game" width="480" height="320"></canvas>
     
     <script src="./script.js"></script>

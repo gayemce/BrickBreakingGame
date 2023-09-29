@@ -1,3 +1,8 @@
+/* TODO: Skor ve Can Canvas dışına alınacak */
+/* TODO: Rastgele tuğlalardan ödül çıkacak*/
+
+/* TODO: Can devam ettiği sürece bir sonraki etapa geçecek ve oyunun zorluğu artacak, çubk küçülecek, top hızalanacak vs.*/
+
 const canvas = document.getElementById("game"); //canvas değişkeninde yapılacak her türlü değişiklik elementi değiştirir - referans tip
 const ctx = canvas.getContext("2d");
 
@@ -18,7 +23,7 @@ let dy = -2;
 
 let ballColor = "#0095DD";
 
-let cubukGenisligi = 150;
+let cubukGenisligi = 130;
 let cubukYüksekligi = 10;
 let cubukX = (width - cubukGenisligi)/2;
 let cubukY = (height - cubukYüksekligi);
@@ -78,6 +83,7 @@ const topunKonumunuDegistir = () =>{
     }
     else if(y + dy > cubukY - 10 && y + dy < cubukY + 10 && x > cubukX && x < cubukX + cubukGenisligi){ // çubuğa çarptığında
         dy = -dy;
+        y = cubukY - 10; 
     }
     else if(y + dy > height - 10){ // aşağı çarptığında
         if(x < cubukX || x > cubukX + cubukGenisligi)
@@ -175,6 +181,22 @@ const oyunBaslatYazisiCiz = () => {
 }
 
 oyunCiz();
+
+const yeniOyun = () =>{
+    if(oyunBasladiMi === false){
+        if(isGameOver){
+            document.location.reload();
+        }
+        else{
+            interval = setInterval(oyunCiz,10);
+            oyunBasladiMi = true;
+        }
+    }else if(oyunBasladiMi === true){
+        if(!isGameOver){
+            document.location.reload();
+        }
+    }
+}
 
 const oyunBaslat = () =>{
     if(oyunBasladiMi === false){
