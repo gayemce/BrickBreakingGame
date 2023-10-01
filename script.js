@@ -1,4 +1,3 @@
-/* TODO: Skor ve Can Canvas dışına alınacak */
 /* TODO: Rastgele tuğlalardan ödül çıkacak*/
 
 /* TODO: Can devam ettiği sürece bir sonraki etapa geçecek ve oyunun zorluğu artacak, çubk küçülecek, top hızalanacak vs.*/
@@ -147,8 +146,8 @@ const tuglayaCarptiMi = () => {
                         clearInterval(interval);
 
                         ctx.font = "25px Verdana";
-                        fillStyle = "black";
-                        ctx.fillText("Tebrikler, oyunu kazandın!", width/2 - 120, height/2);
+                        fillStyle = "green";
+                        ctx.fillText("Tebrikler, oyunu kazandın!", width/2 - 160, height/2);
                     }
                 }
             }
@@ -157,15 +156,11 @@ const tuglayaCarptiMi = () => {
 }
 
 const skoruCiz = () => {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = ballColor;
-    ctx.fillText(`Skor: ${skor}`,8,20)
+    document.getElementById('skorLabel').textContent = `Skor: ${skor}`;
 }
 
 const canCiz = () => {
-    ctx.font = "16px Arial";
-    ctx.fillStyle = ballColor;
-    ctx.fillText(`Can: ${can}`, width-65,20);
+    document.getElementById('canLabel').textContent = `Can: ${can}`;
 }
 
 const oyunBaslatYazisiCiz = () => {

@@ -37,11 +37,26 @@
             background-color: #0095FF;
         }
 
+        .container{
+            display: flex;
+        }
+
+        #skorLabel, #canLabel{
+            font-family: verdana;
+            font-size: 18px;
+            margin: 0.8rem 10.5rem;
+            color: black;
+        }
+
     </style>
 </head>
 <body>
     <button onclick="yeniOyun()">Yeni Oyun</button>
-
+    <div class="container">
+        <div id="skorLabel">Skor: 0</div>
+        <div id="canLabel">Can: 0</div>
+    </div>
+    
     <canvas onclick="oyunBaslat()" id="game" width="480" height="320"></canvas>
     
     <script src="./script.js"></script>
