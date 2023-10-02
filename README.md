@@ -18,3 +18,6 @@ Bu proje, bir tuğla kırma oyunudur. Oyunun amacı, topu hareket ettirerek tuğ
 
 - Sağa gitmek için: Sağ ok tuşu
 - Sola gitmek için: Sol ok tuşu
+
+  ## Oyun Görseli
+![Brick Game](brickGame.png)
