@@ -45,10 +45,11 @@ for(let k = 0; k < tuglaSutunSayisi; k++){
 
 let skor = 0;
 let can = 3;
+let level = 1;
 let isGameOver = false; 
 
 //arrow function
-const oyunCiz = () =>{
+const oyunCiz = () => {
     tahtayiTemizle();
     topCiz();
     topunKonumunuDegistir();
@@ -57,7 +58,29 @@ const oyunCiz = () =>{
     tuglayaCarptiMi();
     skoruCiz();
     canCiz();
-    if(oyunBaslatYazisiCiz()) return;
+    levelCiz();
+
+    if (skor === 150) {
+        level = 2;
+        cubukGenisligi = 80;
+        for (let i = 0; i < tuglaSutunSayisi; i++) {
+            for (let j = 0; j < tuglaSatirSayisi; j++) {
+                tuglalar[i][j].status = 1;
+            }
+        }
+        ballColor = "green";
+    }
+    if (skor === 300) {
+        level = 3;
+        cubukGenisligi = 40;
+        for (let i = 0; i < tuglaSutunSayisi; i++) {
+            for (let j = 0; j < tuglaSatirSayisi; j++) {
+                tuglalar[i][j].status = 1;
+            }
+        }
+        ballColor = "orange";
+    }
+    if (oyunBaslatYazisiCiz()) return;
 }
 
 const tahtayiTemizle = () => {
@@ -142,7 +165,7 @@ const tuglayaCarptiMi = () => {
                     tugla.status = 0;
                     skor += 10;
 
-                    if(skor === 150){
+                    if(skor === 450){
                         clearInterval(interval);
 
                         ctx.font = "25px Verdana";
@@ -163,6 +186,10 @@ const canCiz = () => {
     document.getElementById('canLabel').textContent = `Can: ${can}`;
 }
 
+const levelCiz = () => {
+    document.getElementById('levelLabel').textContent = `Level: ${level}`;
+}
+
 const oyunBaslatYazisiCiz = () => {
     if(!oyunBasladiMi && !isGameOver){
         ctx.fillStyle = "black";
@@ -177,17 +204,16 @@ const oyunBaslatYazisiCiz = () => {
 
 oyunCiz();
 
-const yeniOyun = () =>{
-    if(oyunBasladiMi === false){
-        if(isGameOver){
+const yeniOyun = () => {
+    if (oyunBasladiMi === false) {
+        if (isGameOver) {
             document.location.reload();
-        }
-        else{
-            interval = setInterval(oyunCiz,10);
+        } else {
+            interval = setInterval(oyunCiz, 10);
             oyunBasladiMi = true;
         }
-    }else if(oyunBasladiMi === true){
-        if(!isGameOver){
+    } else if (oyunBasladiMi === true) {
+        if (!isGameOver) {
             document.location.reload();
         }
     }
