@@ -4,7 +4,7 @@ Bu proje, bir tuğla kırma oyunudur. Oyunun amacı, topu hareket ettirerek tuğ
 
 ## Nasıl Çalıştırılır
 
-1. Projeye ulaşmak için: "https://gayemce.github.io/brickGame/"
+1. Projeye ulaşmak için [buraya](https://gayemce.github.io/BrickBreakingGame/) tıklayın.
 2. Oyunu başlatmak için tarayıcıda görünen talimatları izleyin.
 
 ## Oyun Kuralları
